@@ -6,10 +6,20 @@ int main()
     char p11=' ',p12=' ',p13=' ',p21=' ',p22=' ',p23=' ',p31=' ',p32=' ',p33=' ';
     Jogar(p11,p12,p13,p21,p22,p23,p31,p32,p33);
 }
+void JogarDnv(){
+    char playagain;
+    printf("\nDeseja jogar novamente? ");
+    scanf(" %c", &playagain);
+    if(playagain == 's' || 'S')
+        main();
+    else
+        return;
+
+}
 
 void Jogar(char p11,char p12,char p13,char p21,char p22,char p23,char p31,char p32,char p33){
     char escolha;
-    int lin,col;
+    int lin,col,fim=0;
     printf("\nEscolha X ou O para jogar: ");
     scanf(" %c", &escolha);
     printf("\nEscolha a linha para jogar: ");
@@ -77,40 +87,49 @@ void Jogar(char p11,char p12,char p13,char p21,char p22,char p23,char p31,char p
 
      if ((p11 == p12) && (p11 == p13)&& (p11 != ' ')){
         printf("%c ganhou!", escolha);
-        return;
+        JogarDnv();
+        fim = 1;
     }
     if ((p11 == p22) && (p11 == p33)&& (p11 != ' ')){
         printf("%c ganhou!", escolha);
-        return;
+        JogarDnv();
+        fim = 1;
     }
     if ((p11 == p21) && (p11 == p31)&& (p11 != ' ')){
         printf("%c ganhou!", escolha);
-        return;
+        JogarDnv();
+        fim = 1;
     }
     if ((p12 == p22) && (p12 == p32)&& (p12 != ' ')){
         printf("%c ganhou!", escolha);
-        return;
+        JogarDnv();
+        fim = 1;
     }
     if ((p13 == p23) && (p13 == p33)&& (p13 != ' ')){
         printf("%c ganhou!", escolha);
-        return;
+        JogarDnv();
+        fim = 1;
     }
     if ((p21 == p22) && (p21 == p23)&& (p21 != ' ')){
         printf("%c ganhou!", escolha);
-        return;
+        JogarDnv();
+        fim = 1;
     }
     if ((p31 == p32) && (p31 == p33)&& (p31 != ' ')){
         printf("%c ganhou!", escolha);
-        return;
+        JogarDnv();
+        fim = 1;
     }
     if ((p13 == p22) && (p13 == p31)&& (p13 != ' ')){
         printf("%c ganhou!", escolha);
-        return;
+        JogarDnv();
+        fim = 1;
     }
     if (p11 != ' ' && p12 != ' ' && p13 != ' ' && p21 != ' ' && p22 != ' ' && p23 != ' ' && p31 != ' ' && p32 != ' ' && p33 != ' '){
         printf("Deu Velha!");
-        return;
+        JogarDnv();
+        fim = 1;
     }
-
-    Jogar(p11,p12,p13,p21,p22,p23,p31,p32,p33);
+    if(fim != 1)
+        Jogar(p11,p12,p13,p21,p22,p23,p31,p32,p33);
 }
